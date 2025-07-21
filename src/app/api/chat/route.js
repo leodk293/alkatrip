@@ -38,3 +38,18 @@ export const GET = async (request) => {
         return NextResponse.json({ error: "Failed to fetch chats" }, { status: 500 });
     }
 }
+
+export const DELETE = async (request) => {
+    try {
+        const { searchParams } = new URL(request.url);
+        const userId = searchParams.get("userId");
+        if (!userId) {
+            return NextResponse.json({ error: "User not found" }, { status: 404 });
+        }
+        await connectMongoDB();
+        await Chat.deleteMany({ userId });
+    }
+    catch (error) {
+        return NextResponse.json({ error: "Failed to delete chats" }, { status: 500 });
+    }
+}

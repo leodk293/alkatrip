@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import googleLogo from "../../public/google-logo.png";
 import { signIn, useSession } from "next-auth/react";
+import { Trash2 } from "lucide-react";
 
 const Home = () => {
   const { status, data: session } = useSession();
@@ -20,7 +21,6 @@ const Home = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Load chat history when user is authenticated
   useEffect(() => {
     if (status === "authenticated" && session?.user?.id) {
       loadChatHistory();
@@ -101,6 +101,24 @@ const Home = () => {
     }
   }
 
+  async function deleteChats() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete the chat? This action cannot be undone."
+    );
+    if (!confirmed) return;
+    try {
+      const response = await fetch(`/api/chat?userId=${session.user.id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete chats");
+      }
+      loadChatHistory();
+    } catch (error) {
+      console.error("Error deleting chats:", error.message);
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -137,7 +155,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 p-4">
-      <div className="w-full max-w-4xl h-[600px] bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col">
+      <div className="w-full max-w-4xl h-[650px] bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col">
         {/* Chat Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white">
           <div className="flex items-center gap-3">
@@ -279,9 +297,9 @@ const Home = () => {
         ) : status === "authenticated" ? (
           <form
             onSubmit={handleSubmit}
-            className="p-4 bg-white/5 border-t border-white/10"
+            className="p-4 bg-white/5 w-full border-t border-white/10 flex flex-col gap-2 items-center"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex w-full items-center gap-2">
               <input
                 onChange={(e) => setInput(e.target.value)}
                 value={input}
@@ -315,6 +333,15 @@ const Home = () => {
                 )}
               </button>
             </div>
+            {messages.length > 0 && (
+              <button
+                onClick={deleteChats}
+                className=" flex flex-row justify-items-center items-center gap-2 bg-gradient-to-r cursor-pointer w-[18%] self-center px-4 py-2 from-indigo-600 to-purple-600 text-white rounded-full hover:translate-x-4 duration-200"
+              >
+                <Trash2 size={20} color="#ffffff" />
+                <p>Delete Chat</p>
+              </button>
+            )}
           </form>
         ) : (
           <div className="flex justify-center items-center py-6">
