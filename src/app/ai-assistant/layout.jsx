@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const metadata ={
-    title:"Akaltrip - AI ASSISTANT"
+    title:"AI ASSISTANT - Akaltrip"
 }
 
 export default function layout({children}) {

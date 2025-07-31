@@ -137,13 +137,13 @@ export default function SwimmingPool() {
                 <Link href={`/activity/${element.title}`} key={index}>
                   <div className="flex flex-col items-center bg-white/5 gap-2 rounded-[8px] shadow border border-gray-100 w-full min-h-[320px] p-4">
                     <div className="relative w-full aspect-[4/3] rounded-[6px] overflow-hidden bg-gray-100">
-                      <Image
+                      <img
                         src={element.src}
                         alt={element.title}
-                        fill
+                        //fill
                         className="object-cover"
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                        priority={index < 4}
+                        //priority={index < 4}
                       />
                     </div>
                     <div className="flex flex-col items-center flex-1 justify-between w-full">

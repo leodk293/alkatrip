@@ -67,13 +67,10 @@ export default function HomePage() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <Image
+            <img
               src={image.src}
               alt={image.alt}
-              fill
               className="object-cover"
-              priority={index === 0}
-              quality={90}
             />
             {/* Dark overlay for better text visibility */}
             <div className="absolute inset-0 bg-black/30" />
@@ -145,14 +142,11 @@ export default function HomePage() {
           <Link href={""} key={element.alt}>
             <div className="flex flex-col items-center gap-3">
               <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden flex items-center justify-center bg-gray-100">
-                <Image
+                <img
                   src={element.src}
                   alt={element.alt}
-                  width={128}
-                  height={128}
                   className="object-cover w-full h-full"
                   sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
-                  priority
                 />
               </div>
               <p className="text-center text-sm sm:text-base font-medium">

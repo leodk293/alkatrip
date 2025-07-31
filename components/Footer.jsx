@@ -14,7 +14,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* À Propos */}
         <div>
           <h2 className="text-lg font-semibold mb-2">À Propos</h2>
           <ul className="text-sm text-gray-300 space-y-1">
@@ -27,17 +26,17 @@ export default function Footer() {
           <h2 className="text-lg font-semibold mb-2">Liens utiles</h2>
           <ul className="text-sm text-gray-300 space-y-1">
             <li>
-              <Link href="#" className="hover:text-gray-100 transition-colors">
+              <Link href="/who-we-are" className="hover:text-gray-100 transition-colors">
                 Qui sommes-nous ?
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-gray-100 transition-colors">
+              <Link href="/faq" className="hover:text-gray-100 transition-colors">
                 FAQ
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-gray-100 transition-colors">
+              <Link href="/contact" className="hover:text-gray-100 transition-colors">
                 Contactez-nous
               </Link>
             </li>

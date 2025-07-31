@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable} mx-auto antialiased`}
         >
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="  flex-1">{children}</main>
           <Link className=" cursor-pointer" href={'/ai-assistant'}>
             <button className="fixed bottom-6 cursor-pointer right-6 z-50 px-4 py-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition">
               AI ASSISTANT

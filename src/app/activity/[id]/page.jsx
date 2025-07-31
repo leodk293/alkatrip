@@ -140,13 +140,13 @@ export default function ActivityPage({ params }) {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
               <div className="w-full md:w-1/2 flex justify-center">
                 <div className="w-full max-w-md aspect-video rounded-lg overflow-hidden shadow-md">
-                  <Image
+                  <img
                     src={image}
                     alt="Activity Image"
                     className="object-cover w-full h-full"
-                    fill={false}
-                    width={600}
-                    height={400}
+                    // fill={false}
+                    // width={600}
+                    // height={400}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
@@ -181,12 +181,7 @@ export default function ActivityPage({ params }) {
                     occaecati cupiditate non provident, similique sunt in culpa
                     qui officia deserunt mollitia animi.
                   </p>
-                  {/* Call to Action */}
-                  <div className="text-center pt-6 border-t border-gray-200">
-                    <button className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-full transition-colors duration-200 shadow-md hover:shadow-lg w-full sm:w-auto">
-                      Réserver maintenant
-                    </button>
-                  </div>
+                 
                 </div>
               </div>
             </div>
